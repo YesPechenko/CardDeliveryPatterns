@@ -12,9 +12,7 @@ import static com.codeborne.selenide.Selenide.*;
 
 
 public class CardDeliveryPatternsTest {
-
     DataGenerator dataGenerator = new DataGenerator();
-
     String city = dataGenerator.getCity();
     String name = dataGenerator.getName();
     String phone = dataGenerator.getPhone();
@@ -55,7 +53,7 @@ public class CardDeliveryPatternsTest {
 
     @Test
     void shouldTestFormCityNotCorrect () {
-        $("[data-test-id=city] input").setValue("Moscow");
+        $("[data-test-id=city] input").setValue(DataGenerator.getNotCorrectCity());
 
         $("[data-test-id='date'] input").doubleClick().sendKeys(dataGenerator.formateDate(3));
 
@@ -74,7 +72,7 @@ public class CardDeliveryPatternsTest {
 
         $("[data-test-id='date'] input").doubleClick().sendKeys(dataGenerator.formateDate(3));
 
-        $("[data-test-id=name] input").setValue("Иванов-Алекксаров Василий");
+        $("[data-test-id=name] input").setValue("Иванов-Александров Василий");
         $("[data-test-id=phone] input").setValue(phone);
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Запланировать")).click();
@@ -127,7 +125,7 @@ public class CardDeliveryPatternsTest {
 
         $("[data-test-id='date'] input").doubleClick().sendKeys(dataGenerator.formateDate(3));
 
-        $("[data-test-id=name] input").setValue("Ivanov Vasiliy");
+        $("[data-test-id=name] input").setValue(DataGenerator.getNotCorrectName());
         $("[data-test-id=phone] input").setValue(phone);
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Запланировать")).click();
@@ -142,7 +140,7 @@ public class CardDeliveryPatternsTest {
 
         $("[data-test-id='date'] input").doubleClick().sendKeys(dataGenerator.formateDate(3));
 
-        $("[data-test-id=name] input").setValue("");
+        $("[data-test-id=name] input").setValue(DataGenerator.getNotCorrectNameEmptyField());
         $("[data-test-id=phone] input").setValue(phone);
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Запланировать")).click();
@@ -158,7 +156,7 @@ public class CardDeliveryPatternsTest {
         $("[data-test-id='date'] input").doubleClick().sendKeys(dataGenerator.formateDate(3));
 
         $("[data-test-id=name] input").setValue(name);
-        $("[data-test-id=phone] input").setValue("+893143");
+        $("[data-test-id=phone] input").setValue(DataGenerator.getNotCorrectPhone());
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Запланировать")).click();
 

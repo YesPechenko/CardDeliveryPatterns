@@ -7,7 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 public class DataGenerator {
-        private Faker faker;
+    private Faker faker;
         private LocalDate today = LocalDate.now();
         private DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
 
@@ -33,4 +33,23 @@ public class DataGenerator {
             return faker.phoneNumber().phoneNumber();
         }
 
+    public static String getNotCorrectCity() {
+        String phone ="Moscow";
+        return phone;
+    }
+
+    public static String getNotCorrectName() {
+        String phone ="Ivanov Vasiliy";
+        return phone;
+    }
+
+    public static String getNotCorrectNameEmptyField() {
+        String phone ="";
+        return phone;
+    }
+
+    public static String getNotCorrectPhone() {
+        String phone ="+893143";
+        return phone;
+    }
 }
