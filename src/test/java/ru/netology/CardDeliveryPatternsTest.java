@@ -48,7 +48,8 @@ public class CardDeliveryPatternsTest {
         $(byText("У вас уже запланирована встреча на другую дату. Перепланировать?")).should(exist);
         $(byText("Перепланировать")).click();
         $(".notification_status_ok").should(exist);
-        $(".notification__content").shouldHave(exactText("Встреча успешно запланирована на "+dataGenerator.formateDate(5)));
+        $(".notification__content")
+                .shouldHave(exactText("Встреча успешно запланирована на "+dataGenerator.formateDate(5)));
     }
 
 
@@ -89,7 +90,8 @@ public class CardDeliveryPatternsTest {
         $(byText("У вас уже запланирована встреча на другую дату. Перепланировать?")).should(exist);
         $(byText("Перепланировать")).click();
         $(".notification_status_ok").should(exist);
-        $(".notification__content").shouldHave(exactText("Встреча успешно запланирована на "+dataGenerator.formateDate(5)));
+        $(".notification__content")
+                .shouldHave(exactText("Встреча успешно запланирована на "+dataGenerator.formateDate(5)));
 
     }
 
@@ -115,7 +117,8 @@ public class CardDeliveryPatternsTest {
         $(byText("У вас уже запланирована встреча на другую дату. Перепланировать?")).should(exist);
         $(byText("Перепланировать")).click();
         $(".notification_status_ok").should(exist);
-        $(".notification__content").shouldHave(exactText("Встреча успешно запланирована на "+dataGenerator.formateDate(5)));
+        $(".notification__content")
+                .shouldHave(exactText("Встреча успешно запланирована на "+dataGenerator.formateDate(5)));
     }
 
     @Test
@@ -159,19 +162,9 @@ public class CardDeliveryPatternsTest {
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Запланировать")).click();
 
-        $(byText("Успешно!")).shouldBe(visible, Duration.ofMillis(12000));
-        $("[data-test-id=success-notification] .notification__content")
-                .shouldHave(exactText("Встреча успешно запланирована на "+dataGenerator.formateDate(3)));
-        $("[data-test-id='date'] input").doubleClick().sendKeys(dataGenerator.formateDate(5));
-        $(".button").click();
+        $("[data-test-id=phone].input_invalid .input__sub")
+                .shouldHave(exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
 
-        $("[data-test-id=replan-notification]").shouldBe(visible, Duration.ofMillis(12000));
-
-        $(byText("Необходимо подтверждение")).should(exist);
-        $(byText("У вас уже запланирована встреча на другую дату. Перепланировать?")).should(exist);
-        $(byText("Перепланировать")).click();
-        $(".notification_status_ok").should(exist);
-        $(".notification__content").shouldHave(exactText("Встреча успешно запланирована на "+dataGenerator.formateDate(5)));
     }
 
     @Test
